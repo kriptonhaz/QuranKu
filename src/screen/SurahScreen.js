@@ -8,13 +8,15 @@ const { width, height } = Dimensions.get("screen");
 export function SurahScreen(){
   const navigation = useNavigation();
   
-  function gotoDetail(){
-    navigation.navigate("SurahDetail");
+  function gotoDetail(number){
+    navigation.navigate("SurahDetail", {
+      ayat: number
+    });
   }
 
   const CardSurah = ({name, number, ayat, translation}) => {
     return(
-      <TouchableOpacity style={styles.containerCardSurah} onPress={gotoDetail}>
+      <TouchableOpacity style={styles.containerCardSurah} onPress={() => gotoDetail(number)}>
         <View style={styles.containerNumber}>
           <Text style={styles.textNumber}>{number}</Text>
         </View>
